@@ -2,6 +2,7 @@ import { Suspense, lazy } from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Outlet, Link } from "react-router-dom";
 const Home = lazy(() => import('components/home/Home'));
+const Counter = lazy(() => import('components/counter/Counter'));
 const About = lazy(() => import('components/about/About'));
 
 
@@ -12,6 +13,9 @@ const Layout = () => {
         <ul>
           <li>
             <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/counter">Counter</Link>
           </li>
           <li>
             <Link to="/about">About</Link>
@@ -32,6 +36,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Layout />}>
               <Route index element={<Home />} />
+              <Route path="/counter" element={<Counter />} />
               <Route path="/about" element={<About />} />
             </Route>
             <Route path="*" element={<Home />} />
